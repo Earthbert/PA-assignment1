@@ -31,23 +31,20 @@ int main() {
         int unused_ferrys = k;
         uint64_t current_ferry_load = 0;
         for (int i = 0; i < n; i++) {
-            if (unused_ferrys <= 0) {
-                low = mid + 1;
-                break;
-            }
             if ((current_ferry_load + cars[i]) > mid) {
-                current_ferry_load = cars[i];
                 unused_ferrys--;
+                if (unused_ferrys == 0) {
+                    low = mid + 1;
+                    break;
+                }
+                current_ferry_load = cars[i];
             } else {
                 current_ferry_load += cars[i];
             }
+
             if (i == (n - 1)) {
-                if (unused_ferrys > 0) {
-                    result = mid;
-                    high = mid;
-                } else {
-                    low = mid + 1;
-                }
+                result = mid;
+                high = mid;
             }
         }
     }
