@@ -54,12 +54,15 @@ int64_t SolveTask2(int n, istream &is) {
 
     vector<vec> v_min(v_max);
 
-    sort(v_max.begin(), v_max.end(), [](vec e1, vec e2) {return (max(e1.a, e1.b) > max(e2.a, e2.b));});
-    sort(v_min.begin(), v_min.end(), [](vec e1, vec e2) {return (min(e1.a, e1.b) < min(e2.a, e2.b));});
+    sort(v_max.begin(), v_max.end(),
+        [](vec e1, vec e2) {return (max(e1.a, e1.b) > max(e2.a, e2.b));});
+    sort(v_min.begin(), v_min.end(),
+        [](vec e1, vec e2) {return (min(e1.a, e1.b) < min(e2.a, e2.b));});
 
     int i;
     for (i = 0; i < n; i++) {
-        if ((i > (n - moves - 1)) && min(v_min[i].a, v_min[i].b) >= max(v_max[i].a, v_max[i].b))
+        if ((i > (n - moves - 1)) && min(v_min[i].a, v_min[i].b) >=
+            max(v_max[i].a, v_max[i].b))
             break;
         result += max(v_max[i].a, v_max[i].b);
     }
