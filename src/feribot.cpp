@@ -42,9 +42,12 @@ int main() {
                 current_ferry_load += cars[i];
             }
             if (i == (n - 1)) {
-                result = mid;
-                high = mid;
-                break;
+                if (unused_ferrys > 0) {
+                    result = mid;
+                    high = mid;
+                } else {
+                    low = mid + 1;
+                }
             }
         }
     }
