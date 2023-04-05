@@ -27,7 +27,7 @@ run-p1: build
 run-p2: build
 	$(OUT_DIR)/nostory
 run-p3: build
-	$(OUT_DIR)/shusi
+	$(OUT_DIR)/sushi
 run-p4: build
 	$(OUT_DIR)/semnale
 
