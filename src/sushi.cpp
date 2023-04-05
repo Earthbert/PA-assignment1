@@ -5,8 +5,8 @@
 using namespace std;
 
 int task1(int n, int m, int x, vector <int> &p, vector <vector<int>> &g) {
-	for (int i = 0; i < n; ++i) {
-		for (int j = 0; j < m; ++j) {
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < m; j++) {
 			if (i > 0)
 				g[i][j] += g[i - 1][j];
 		}
@@ -14,7 +14,7 @@ int task1(int n, int m, int x, vector <int> &p, vector <vector<int>> &g) {
 
 	vector<vector<int>> dp(m + 1, vector<int>(x * n + 1, 0));
 
-	for (int i = 1; i <= m; ++i) {
+	for (int i = 1; i <= m; i++) {
 		for (int j = 0; j <= x * n; j++) {
 			dp[i][j] = dp[i - 1][j];
 
@@ -29,8 +29,8 @@ int task1(int n, int m, int x, vector <int> &p, vector <vector<int>> &g) {
 }
 
 int task2(int n, int m, int x, vector <int> &p, vector <vector <int> > &g) {
-	for (int i = 0; i < n; ++i) {
-		for (int j = 0; j < m; ++j) {
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < m; j++) {
 			if (i > 0)
 				g[i][j] += g[i - 1][j];
 		}
@@ -38,7 +38,7 @@ int task2(int n, int m, int x, vector <int> &p, vector <vector <int> > &g) {
 
 	vector<vector<int>> dp(m + 1, vector<int>(x * n + 1, 0));
 
-	for (int i = 1; i <= m; ++i) {
+	for (int i = 1; i <= m; i++) {
 		for (int j = 0; j <= x * n; j++) {
 			dp[i][j] = dp[i - 1][j];
 
@@ -58,7 +58,40 @@ int task2(int n, int m, int x, vector <int> &p, vector <vector <int> > &g) {
 }
 
 int task3(int n, int m, int x, vector <int> &p, vector <vector <int> > &g) {
-	return 0;
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < m; j++) {
+			if (i > 0)
+				g[i][j] += g[i - 1][j];
+		}
+	}
+
+	int w = n * x;
+
+	for (int i = 0; i < m; i++) {
+		p[i] += w + 1;
+	}
+
+	w += n * (w + 1);
+
+	vector<vector<int>> dp(vector(m + 1, vector<int>(w + 1, 0)));
+
+	for (int i = 1; i <= m; i++) {
+		for (int j = 0; j <= w; j++) {
+			dp[i][j] = dp[i - 1][j];
+
+			if (j - 2 * p[i - 1] >= 0) {
+				int two_plates_aux = dp[i - 1][j - 2 * p[i - 1]] + 2 * g[n - 1][i - 1];
+				int one_plate_aux = dp[i - 1][j - p[i - 1]] + g[n - 1][i - 1];
+				dp[i][j] = max(dp[i][j], two_plates_aux);
+				dp[i][j] = max(dp[i][j], one_plate_aux);
+			} else if (j - p[i - 1] >= 0) {
+				int aux = dp[i - 1][j - p[i - 1]] + g[n - 1][i - 1];
+				dp[i][j] = max(dp[i][j], aux);
+			}
+		}
+	}
+
+	return dp[m][w];
 }
 
 int main() {
@@ -82,13 +115,13 @@ int main() {
 	grades.assign(n, vector <int>(m, 0));
 
 	// price of each sushi
-	for (int i = 0; i < m; ++i) {
+	for (int i = 0; i < m; i++) {
 		cin >> prices[i];
 	}
 
 	// each friends rankings of sushi types
-	for (int i = 0; i < n; ++i) {
-		for (int j = 0; j < m; ++j) {
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < m; j++) {
 			cin >> grades[i][j];
 		}
 	}
