@@ -30,7 +30,8 @@ run-p3: build
 	$(OUT_DIR)/sushi
 run-p4: build
 	$(OUT_DIR)/semnale
-
+run-p5: build
+	$(OUT_DIR)/badgpt
 
 $(CC_EXECS): $(OUT_DIR)/%: $(SRC_DIR)/%.cpp
 	g++ -o $@ $^ $(CCFLAGS)
