@@ -1,0 +1,73 @@
+# PA - Tema 1
+### Daraban Albert-Timotei
+
+
+## Problema 1
+Se observa ca valoarea cautata (greutate maxima transportata de un feribot) se afla in intervalul
+greutati maxime a unei masini (cand am avea un feribot pentru fiecare masina) si suma totala
+ (cand am avea un singur feribot). Afltfel, fac cautare binara in acest interval pana gasesc cea mai
+mica valoare posibila.
+#### Complexitare: O(n)
+
+
+## Problema 2
+### Task 1
+In acest caz daca putem muta oricate elemente inseamna ca putem aseza elementele in asa fel incat
+sa contribuie la suma toate cele mai mari n elemente.
+#### Complexitate: O(n * log n)
+
+### Task 2
+In acest caz am creat o structura pentru a pastra valori din ambii vectori in acelasi element.
+Creez o copie a vectorului. Sortez unul din vectori in functie de valoarea maxima din element
+si pe celalalt de valoarea minima. Ca sa maximizam suma alegem prime n - k sau mai multe elemente din vectorul
+sortat dupa maxim (adica nu am fi mutatat acele elemente). Si daca e nevoie o sa alegem k sau mai putine
+elemente din vectorul sortat dupa valoarea minima (adica mutam acele elemente pe positii nefolosite inca).
+#### Complexitate O(n * log n)
+
+
+## Problema 3
+### Task 1
+Am observat ca daca adunam notele fiecarei persoana pentru fiecare platou in parte, problema devine
+Rucsac classic, unde greutatea va fi pretul fiecarei platou si profitul este suma notelor pe acel platou.
+#### Complexitate O(m * n * x)
+
+### Task 2
+Asemanator cu primul Task dar am facut ca atunci se poate sa ne uitam si ce s ar intampla daca am
+alege doua platouri.
+#### Complexitate O(m * n * x)
+
+### Task 3
+Acelasi principiu de la Task 2 dar am modificat pretul si suma de bani pentru a ma asigura ca
+nu se pot comanda mai mult de n platouri.
+Idee a fost luat de [aici]{https://cs.stackexchange.com/questions/123553/knapsack-problem-with-exact-required-item-number-constraint}.
+#### Complexitate O(m * n * x)
+
+
+## Problema 4
+### Task 1
+Am creat doua matrici end_in_one si end_in_zero care reprezinta numarul 
+de numere binare posibile care se pot construi folosind i biti de 0 
+si j biti de 1 cu constrangerea ca nu putem avea doi biti de 1 la rand.
+Initalizez cazurile de baza.
+Parcurg subproblemele si in end_in_one extind doar end_in_zero fiindca nu putem avea doi de 1 la rand, 
+iar in end_in_zero extind end_in_one si end_in_zero.
+#### Complexitate O(x * y)
+
+### Task 2
+Asemanator cu Task 1 dar am mai facut o matrice care reprezinta numarul de 
+numerele binare care se termina in doi de 1.
+Aceasa va extind end_in_zero si va fi extinsa doar de end_in_one.
+#### Complexitate O(x * y)
+
+
+# Problema 5
+Numarul de stringuri initalie posibile este dat doar de caractere u si v.
+Pentru fiecare aparitie a u sau v numarul de posibilitati initale este
+numarul de posibilitati dininainte inmulti cu numarul de feluri in care 
+numarul de u sau v pot fi scrise.
+Pentru a afla acest numar am dedus recurenta x(i) = x(i - 1) + x(i - 2),
+cu cazul de baza x(1) = 1, x(2) = 2.
+Pentru a calcula semi-eficient recurenta am folosit exponentiala logarithmica
+pe o matrice care sa imi rezolve recurenta.
+Pentru valori mari ale lui n_i nu pot rezolva problema intr-un timp rezonabil.
+#### Complexitate O(g * log(n_i))

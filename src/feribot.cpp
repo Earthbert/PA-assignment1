@@ -26,23 +26,30 @@ int main() {
     uint64_t high = sum;
     uint64_t mid;
 
+    // Binary Search in possible max weight of the ferrys
     while (low < high) {
         mid = low + ((high - low) / 2);
         int unused_ferrys = k;
         uint64_t current_ferry_load = 0;
         for (int i = 0; i < n; i++) {
             if ((current_ferry_load + cars[i]) > mid) {
+                // We cannot fit anymore cars with current constrain
+                // on current ferry
                 unused_ferrys--;
                 if (unused_ferrys == 0) {
+                    // This weight is too small
                     low = mid + 1;
                     break;
                 }
                 current_ferry_load = cars[i];
             } else {
+                // We can fit car in current ferry
                 current_ferry_load += cars[i];
             }
 
             if (i == (n - 1)) {
+                // Found a possible solution
+                // Search for a better one
                 result = mid;
                 high = mid;
             }

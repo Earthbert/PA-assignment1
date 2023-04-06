@@ -28,8 +28,10 @@ vector<int> ReadVector(istream &is, int size) {
 
 int64_t SolveTask1(int n, istream &is) {
     int64_t result = 0;
+    // Read all both vectors in one
     vector<int> v_max = ReadVector(is, 2 * n);
     sort(v_max.begin(), v_max.end());
+    // Get all n largest value from both vectors
     for (int i = n; i < 2 * n; i++) {
         result += v_max[i];
     }
@@ -41,9 +43,11 @@ int64_t SolveTask2(int n, istream &is) {
     int moves;
 
     is >> moves;
-
+    // Create vector to store to store both elements from both
+    // vectors values on the same element
     vector<vec> v_max(n);
 
+    // Read vectors
     for (int i = 0; i < n; i++) {
         is >> v_max[i].a;
     }
@@ -52,15 +56,18 @@ int64_t SolveTask2(int n, istream &is) {
         is >> v_max[i].b;
     }
 
+    // Copy vector
     vector<vec> v_min(v_max);
-
+    // Sort first vector by bigger value
     sort(v_max.begin(), v_max.end(),
         [](vec e1, vec e2) {return (max(e1.a, e1.b) > max(e2.a, e2.b));});
+    // Sort copy vector by bigger value
     sort(v_min.begin(), v_min.end(),
         [](vec e1, vec e2) {return (min(e1.a, e1.b) < min(e2.a, e2.b));});
 
     int i;
     for (i = 0; i < n; i++) {
+        // Check if it is advantegous to stop selecting element from v_max
         if ((i > (n - moves - 1)) && min(v_min[i].a, v_min[i].b) >=
             max(v_max[i].a, v_max[i].b))
             break;

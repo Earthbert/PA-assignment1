@@ -5,6 +5,7 @@
 using namespace std;
 
 int task1(int n, int m, int x, vector <int> &p, vector <vector<int>> &g) {
+	// Calculate sum of grade given by guest
 	for (int i = 0; i < n; i++) {
 		for (int j = 0; j < m; j++) {
 			if (i > 0)
@@ -14,6 +15,7 @@ int task1(int n, int m, int x, vector <int> &p, vector <vector<int>> &g) {
 
 	vector<vector<int>> dp(m + 1, vector<int>(x * n + 1, 0));
 
+	// Knapsack 0 1 from lab
 	for (int i = 1; i <= m; i++) {
 		for (int j = 0; j <= x * n; j++) {
 			dp[i][j] = dp[i - 1][j];
@@ -29,6 +31,7 @@ int task1(int n, int m, int x, vector <int> &p, vector <vector<int>> &g) {
 }
 
 int task2(int n, int m, int x, vector <int> &p, vector <vector <int> > &g) {
+	// Calculate sum of grade given by guest
 	for (int i = 0; i < n; i++) {
 		for (int j = 0; j < m; j++) {
 			if (i > 0)
@@ -38,6 +41,7 @@ int task2(int n, int m, int x, vector <int> &p, vector <vector <int> > &g) {
 
 	vector<vector<int>> dp(m + 1, vector<int>(x * n + 1, 0));
 
+	// Knapsack 0 1 from lab, but check the posibility of chosing 2 plates.
 	for (int i = 1; i <= m; i++) {
 		for (int j = 0; j <= x * n; j++) {
 			dp[i][j] = dp[i - 1][j];
@@ -58,6 +62,7 @@ int task2(int n, int m, int x, vector <int> &p, vector <vector <int> > &g) {
 }
 
 int task3(int n, int m, int x, vector <int> &p, vector <vector <int> > &g) {
+	// Calculate sum of grade given by guest
 	for (int i = 0; i < n; i++) {
 		for (int j = 0; j < m; j++) {
 			if (i > 0)
@@ -67,14 +72,17 @@ int task3(int n, int m, int x, vector <int> &p, vector <vector <int> > &g) {
 
 	int w = n * x;
 
+	// Change value of prices to constrain maximum of chosen plates.
 	for (int i = 0; i < m; i++) {
 		p[i] += w + 1;
 	}
 
+	// Change value of total money to constrain maximum of chosen plates.
 	w += n * (w + 1);
 
 	vector<vector<int>> dp(vector(m + 1, vector<int>(w + 1, 0)));
 
+	// Knapsack 0 1 from lab, but check the posibility of chosing 2 plates.
 	for (int i = 1; i <= m; i++) {
 		for (int j = 0; j <= w; j++) {
 			dp[i][j] = dp[i - 1][j];
