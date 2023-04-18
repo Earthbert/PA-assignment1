@@ -5,7 +5,7 @@ CCFLAGS := -std=c++17 -Wall -Wextra -O0 -lm
 
 # Directorul care conține sursele voastre, și cel unde punem binarele.
 SRC_DIR := ./src
-OUT_DIR := ./out
+OUT_DIR := ./build
 
 # Compilăm *toate* sursele găsite în $(SRC_DIR).
 # Modificați doar dacă vreți să compilați alte surse.
@@ -22,15 +22,15 @@ build: $(TARGETS)
 clean:
 	rm -f $(TARGETS)
 
-run-p1: build
+run-p1:
 	$(OUT_DIR)/feribot
-run-p2: build
+run-p2:
 	$(OUT_DIR)/nostory
-run-p3: build
+run-p3:
 	$(OUT_DIR)/sushi
-run-p4: build
+run-p4:
 	$(OUT_DIR)/semnale
-run-p5: build
+run-p5:
 	$(OUT_DIR)/badgpt
 
 $(CC_EXECS): $(OUT_DIR)/%: $(SRC_DIR)/%.cpp
