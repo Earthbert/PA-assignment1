@@ -6,10 +6,10 @@ using namespace std;
 const int mod = 1000000007;
 
 int type1(int x, int y) {
-	// end_in_one[i][j] = number of posibile numbers using i zeros and 
+	// end_in_one[i][j] = number of posibile numbers using i zeros and
 	// j ones ending in one
 	vector<vector<int>> end_in_one(x + 1, vector<int>(y + 1, 0));
-	// end_in_zero[i][j] = number of posibile numbers using i zeros and 
+	// end_in_zero[i][j] = number of posibile numbers using i zeros and
 	// j ones ending in zero
 	vector<vector<int>> end_in_zero(x + 1, vector<int>(y + 1, 0));
 
@@ -30,13 +30,13 @@ int type1(int x, int y) {
 }
 
 int type2(int x, int y) {
-	// end_in_one[i][j] = number of posibile numbers using i zeros and 
+	// end_in_one[i][j] = number of posibile numbers using i zeros and
 	// j ones ending in one
 	vector<vector<int>> end_in_one(x + 1, vector<int>(y + 1, 0));
-	// end_in_zero[i][j] = number of posibile numbers using i zeros and 
+	// end_in_zero[i][j] = number of posibile numbers using i zeros and
 	// j ones ending in zero
 	vector<vector<int>> end_in_zero(x + 1, vector<int>(y + 1, 0));
-	// end_in_zero[i][j] = number of posibile numbers using i zeros and 
+	// end_in_zero[i][j] = number of posibile numbers using i zeros and
 	// j ones ending in two ones
 	vector<vector<int>> end_in_two_ones(x + 1, vector<int>(y + 1, 0));
 

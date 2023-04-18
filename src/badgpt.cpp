@@ -1,8 +1,8 @@
+#include <string.h>
 #include <cstdint>
 #include <fstream>
 #include <vector>
 #include <string>
-#include <string.h>
 
 using namespace std;
 

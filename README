@@ -39,7 +39,7 @@ alege doua platouri.
 ### Task 3
 Acelasi principiu de la Task 2 dar am modificat pretul si suma de bani pentru a ma asigura ca
 nu se pot comanda mai mult de n platouri.
-Idee a fost luat de [aici]{https://cs.stackexchange.com/questions/123553/knapsack-problem-with-exact-required-item-number-constraint}.
+Idee a fost luat de [aici](https://cs.stackexchange.com/questions/123553/knapsack-problem-with-exact-required-item-number-constraint).
 #### Complexitate O(m * n * x)
 
 
@@ -60,7 +60,7 @@ Aceasa va extind end_in_zero si va fi extinsa doar de end_in_one.
 #### Complexitate O(x * y)
 
 
-# Problema 5
+## Problema 5
 Numarul de stringuri initalie posibile este dat doar de caractere u si v.
 Pentru fiecare aparitie a u sau v numarul de posibilitati initale este
 numarul de posibilitati dininainte inmulti cu numarul de feluri in care 
